@@ -1,0 +1,128 @@
+*, *::before, *::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  font-size: 1.6rem;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+
+.container{
+  width: 60%;
+  margin-left: 25vw;
+}
+
+h1{
+  color: #3026A4;
+  font-weight: bold;
+  font-size: 250%;
+  text-align: center;
+}
+
+h2{
+  margin-bottom: 20px;
+}
+
+section{
+  margin: 15px 0;
+}
+
+p{
+  margin: 15px 0;
+}
+
+details {
+  margin: 10px;
+}
+
+img{
+  width: 100%;
+}
+
+aside nav{
+  background-color: #799ced;
+}
+
+aside nav ul{
+  list-style-type: none;
+  margin: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #799ced;
+  position: fixed;
+  overflow: auto;
+}
+
+aside nav ul li{
+  background-color: #799ced;
+  color: white;
+  font-size: 110%;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+aside nav ul li:hover{
+  background-color: #ffffff;
+}
+
+aside nav ul li a, aside nav ul li a:active, aside nav ul li a:visited{
+  text-decoration: none;
+  display: block;
+  padding: 20px 5px;
+}
+
+.trademark {
+  font-size: 70%;
+  font-style: italic;
+  color: grey;
+  margin: 25px;
+}
+
+.tldr{
+  padding: 15px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+.pixels{
+  width: 96px;
+  margin: 10px auto;
+  display: block;
+}
+
+.paper{
+  margin: 30px 0;
+}
+
+@media only screen and (max-width: 1000px) {
+  .container{
+    width: 70%;
+    margin-left: 25vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container{
+    width: 90%;
+    padding-top: 35%;
+    margin-left: 5vw;
+  }
+
+  aside nav ul{
+    width: 100%;
+    height: 20%;
+  }
+
+  aside nav ul li a, aside nav ul li a:active, aside nav ul li a:visited{
+    padding: 15px 0;
+  }
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="main.css"/>
+    <title>Week 1 - Een simpele webpagina</title>
+  </head>
+  <body>
+    <aside>
+      <nav class="navigation">
+        <ul class="unlisted">
+          <li><a href="index.html">Startpagina</a></li>
+          <li><a href="artikel2.html">Artikel 2</a></li>
+          <li><a class="current" href=".">Artikel 3</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="container">
+      <article>
+        <h1>A guide to CSS units — pt. 1: look at these absolute units!</h1>
+        <blockquote class="tldr">
+          <p><b>TL;DR QUICK SUMMARY</b></p>
+          <p>Welcome to our four part series on units in CSS, where we dive into each available unit,
+          explain the relationship between them and try to find out when to use which. We will talk about accessibility,
+          best practices for developer teams and the history of sizing stuff on screens (and in print). This first part will present a
+          general primer on the topic of size units, teach you everything you need to know about pixels and prepare you for the rabbit hole
+          we are about to go down. Stay tuned for the next part, in which we will talk about font relative units!</p>
+        </blockquote>
+        <section>
+          <p>Let's talk about units of length in general. At some point in the past, probably hundreds of thousands of years ago,
+          one of our ancestors needed a way to describe the size of something — maybe how big that mammoth was — they just saw.
+          So our ancestor used what was at hand — or at foot. Archaic units of measurement were often expressions of one's body: feet, ells, steps
+          (often times in duodecimal, or steps of 12, e.g. 12 inch == 1 foot). The bloody mammoth was 8 ells high! That's not very precise, sure —
+          but the difference between your ell length and mine isn't particularly important here... did you see the size of that beast!?</p>
+        </section>
+        <section>
+          <p>In those days human contact was mostly limited to immediate neighbors, but as history progressed
+          the world grew more and more complicated and globalized. Thus, units (not only distance, also mass, volume, time, etc.)
+          had to be exact and unambiguous. Whenever the world grew more complex via evolving technology,
+          new units of measurements at higher precisions had to be defined and standardized.
+          It proved to also be very advantageous when these units are proportioned (ideally in decimal)
+          and depend on each other wherever possible, so conversion and calculations are easier. That's how the metric system came to be.</p>
+
+          <p><i>Disclaimer: the imperial system of units is impractical and weird. This article presumes familiarity with metric.</i></p>
+        </section>
+        <section>
+          <p>Some of the metric and imperial units are also built into CSS:</p>
+
+          <p>There's:</p>
+          <ul>
+            <li>n → inch, or 25.4 millimeters</li>
+            <li>pc → typographic pica, 1/6th of an inch or ~4,23 millimeters</li>
+            <li>pt → typographic point, 1/12th of a pica or 1/72th of an inch or ~0,353 millimeters</li>
+            <li>cm → centimeter, 1/100th of a meter</li>
+            <li>mm → millimeter, 1/10 of a centimeter</li>
+            <li>Q → quarter millimeters (I know, before I researched this article I never heard about it either).</li>
+          </ul>
+        </section>
+        <section>
+          <p>Everybody has an understanding of what a centimeter is in the real world,
+          and most frontend devs think they have an idea of what 100px means to a browser,
+          but it is worthwhile knowing the relationships between these units to better understand why some
+          of them are more suitable for certain use cases than others.</p>
+        </section>
+        <section>
+          <p>Most of the time when we talk about CSS behavior, we mean "on screen".
+          But you can (and sometimes should) also write CSS for print as your target medium.
+          That's when units like <i>cm, in, mm</i> or <i>pt</i> come into play. <b>Then, and only then, CSS lengths translate to absolute units.</b>
+          <i>1in</i> used in CSS will only really be 1 inch when printed on paper.
+          When displayed on screen, browsers fall back to <i>96px</i> (the history of this value is <a href="https://www.scantips.com/no72dpib.html">interesting but too extensive for this article</a>)
+          and the physical size of that will vary greatly (when you apply a ruler to your screen, more on that later).</p>
+
+          <p>Most articles about CSS units also treat <i>px</i> as an absolute unit, technically I think it's kind of a hybrid.</p>
+        </section>
+        <section>
+          <h2>dpi/ppi resolution on the web and the 72 myth</h2>
+          <figure><img src="img/macintosh.webp" alt="A 1984 Macintosh computer with mouse and floppy driveA 1984 Macintosh computer with mouse and floppy drive"></figure>
+          <p>"But!" I hear you scream, "isn't screen resolution where pixels and inches meet!?" —
+          and by that you mean dpi/ppi (dots per inch or pixels per inch).
+          This kind of conversation comes up very often when you work with designers who were classically trained in graphic design:</p>
+
+          <p>"What resolution should I do the designs in? dpi wise?".</p>
+
+          <p>The short answer is: it doesn't matter. The web doesn't have a resolution.</p>
+
+          <p>"Okay? So... 72 dpi?"</p>
+
+          <p>If it makes you happy. The CSS spec uses 96... but resolution without dimensions means nothing.
+          Design your stuff on a 320px wide canvas — mobile first! Then progressively go bigger.</p>
+
+          <p>"But what dpi do I..."</p>
+
+          <p>When you ask someone how far it is from Paris to Prague, the answer should be a concrete answer
+          (round about 1000 kilometers). Saying "72 dpi" is like saying "it's 130 kilometers per hour".</p>
+
+          <p>"... WHAT?"</p>
+
+          <p>I'm just trying to tell you: your graphic software makes you specify width, height
+          (dimensions that actually matter) and also resolution. But on the web — on screens generally —
+          resolution doesn't matter. A 1500px wide image will always be that, no matter what the dpi metadata says.
+          If I open one of your files in Photoshop and it says "72 dpi" the only takeaway from this is "this was probably designed for screen".</p>
+
+          <p>"Why does it default to 72 then?"</p>
+
+          <p>Because when Apple first introduced the Macintosh in 1984, they designed the internal CRT monitor to be exactly so big,
+          that 72 physical pixels equal 72 typographical points or 1 inch,
+          so type on screen and type on printouts matched in actual physical size.</p>
+
+          <p>"So what do I do now?"</p>
+
+          <p>Stop worrying about dpi for screen design, use 72 by all means, but: be aware of how dimensions affect responsive design
+          and how your designs need to be adaptable to different screen sizes. When in doubt,
+          always leave a note on how an element is sized/constructed.
+          Avoid sizing that is not dictated by a grid or parent element. Don't use Photoshop for UI design.</p>
+
+          <p>"Thank you, Sensei."</p>
+        </section>
+        <section>
+          <h2>What is a pixel and how big is it then?</h2>
+          <figure><img src="img/pixels.webp" alt="close up photo of LCD display pixelsclose up photo of LCD display pixels"></figure>
+          <p>On the aforementioned Macintosh from 1984 1px in a (hypothetical) browser would equal one physical pixel of the CRT monitor.</p>
+
+          <p>Nowadays our displays are using a much higher pixel density,
+          so 1px is displayed using 2 or more physical pixels — this is called HiDPI (or retina for Apple users).
+          Display vendors all use different densities and sizes, so how could we really define what 1px relates to today?
+          The W3C's CSS spec solves this problem in a very cool and unusual way:</p>
+
+          <p>The reference pixel is the visual angle of one pixel on a device with a pixel density of 96dpi and a distance from the reader
+          of an arm's length. For a nominal arm's length of 28 inches, the visual angle is therefore about 0.0213 degrees.
+          For reading at arm's length, 1px thus corresponds to about 0.26 mm (1/96 inch).</p>
+
+          <p>(if this interests you further, I recommend this article)</p>
+
+          <p>On your screen right now, this is a 96px by 96px sized square:</p>
+
+          <figure><img class="pixels" src="img/96x96.png" alt="a 96px sized square"></figure>
+          <p>Go on, grab a ruler and measure the physical size of that square now! It will probably be different than on my 4K display:</p>
+
+          <figure><img src="img/96x96px_LG_4K.webp" alt="a ruler measuring the square on a screena ruler measuring the square on a screen"></figure>
+          <p>It comes out as a little less than 2 centimeters. I have another display right next to it, my MacBook's retina screen, let's see:</p>
+
+          <figure><img src="img/96x96px_AppleRetina.webp" alt="a ruler measuring the same square on another screen ruler measuring the same square on another screen"></figure>
+          <p>About 1.7 centimeters, not even close to the other one and in both cases not even near 1 inch!</p>
+
+          <p>I would argue that makes px a semi-relative unit. Relative to your display's size and pixel density that is.
+          But speaking in CSS, px is the only "absolute" unit that's really ever used when you layout on screens.
+          That's why I consider it hybrid.</p>
+        </section>
+        <section>
+          <h2>Conclusion</h2>
+          <p>We have now gained some insight into why size doesn't just matter — in web development it also tends to be relative.
+          This was meant as a primer for the rest of this series, where we will learn how CSS units all work together
+          and when to use which. To start things off, we will look at font relative units in the next part.</p>
+
+          Header photo by Charles Deluvio on Unsplash
+          <figure><img src="img/giphy.gif" alt="One more thing..."></figure>
+        </section>
+        <section>
+          <h2>Bonus: Paper sizes</h2>
+          <p>Wait! There's more! As a little post scriptum, here's my favorite piece of everyday engineering you never think about:
+          the ISO 216 international standard for paper sizes, most commonly known for A4.
+          If you ever become the last survivor of the apocalypse and you need to rebuild civilization,
+          remember these two key facts about how A4 is constructed and you'll be fine:</p>
+
+          <ul>
+            <li class="paper">When you take a sheet of paper of any size A(n) (e.g. A4) and cut it in half height-wise,
+            you get two identical sheets of the next smaller size A(n-1) (e.g. A4 → A5).
+            That works, because of the aspect ratio of 1:√2 or about 1:1.41421356.
+            This also makes it easy to scale documents up or down to other A sizes... mind blowing!</li>
+
+            <li class="paper">A0 is defined as a sheet of paper with the aforementioned aspect ratio and a total area of 1m².
+            So every size An has an area of 1/2ⁿ m² (for example A4 is 1/16m²). This also helps weight calculations:
+            40 sheets of A4 paper with a paper weight of 80g/m² thus weigh: 40 × 1/16m² × 80g/m² = 200g. <em>EASY PEASY!</em></li>
+          </ul>
+
+          <figure><img src="img/iso-216.webp" alt="Schema drawing of how paper sizes are constructed"></figure>
+          <p>This has nothing to do with CSS, but I love it and I mention it as often as I can!</p>
+        </section>
+        <details>
+          <summary> An article on how to use CSS units.</summary>
+          <p> Artikel gebruikt voor educatieve doeleinden.</p>
+          <a href="https://www.peerigon.com/en/blog/complete-guide-to-css-units-series-part-1-absolute-units/"> Link naar gebruikt artikel.</a>
+        </details>
+      </article>
+    </main>
+    <footer>
+      <p class="trademark">Deze site is gemaakt in opdracht van Hogeschool Leiden door Devin Stigter.</p>
+    </footer>
+  </body>
+</html>
