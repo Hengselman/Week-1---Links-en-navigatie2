@@ -58,17 +58,49 @@
           <p>That is one of the reasons I prefer…</p>
         </section>
         <section>
-          <p>Some of the metric and imperial units are also built into CSS:</p>
+          <h3>rem</h3>
+          <p>Like <em>em</em>, <em>rem</em> is relative to font size,
+            but in this case always the font size specified by the root element of the document
+            (<em>:root {…}</em>, for websites it's the <em>html</em> element).
+            So across your whole CSS code base <em>1rem</em> will always be rendered the same size.
+            But the question is: what size will that be in practice?</p>
+          <p>To answer that, let's briefly talk about accessibility (a11y for short).
+            Every browser has a default font size and a method for the user to change it.</p>
+          <figure>
+            <img src="/img/font-setting-firefox.webp" alt="">
+          </figure>
+          <p>That's the base font size users will see on your website when unaltered by your CSS.
+            The <i>default</i> default here is <code>16px</code> and according to <a href="https://medium.com/@vamptvo/pixels-vs-ems-users-do-change-font-size-5cfb20831773">this research</a> about 3% of users change this setting,
+            almost always to something bigger than 16. 
+            <b>When it comes to the internet, 3% is quite a few million people!</b></p>
+          <p>Now if you go ahead and do something like this…</p>
+          <pre><code>
+            html {
+              font-size: 14px;
+              /* 🚫 do not do something like this! */
+            }
 
-          <p>There's:</p>
-          <ul>
-            <li>n → inch, or 25.4 millimeters</li>
-            <li>pc → typographic pica, 1/6th of an inch or ~4,23 millimeters</li>
-            <li>pt → typographic point, 1/12th of a pica or 1/72th of an inch or ~0,353 millimeters</li>
-            <li>cm → centimeter, 1/100th of a meter</li>
-            <li>mm → millimeter, 1/10 of a centimeter</li>
-            <li>Q → quarter millimeters (I know, before I researched this article I never heard about it either).</li>
-          </ul>
+            body {
+              font-size: 14px;
+              /* 🚫 this is also bad */
+            }
+          </code></pre>
+          <p>… you break a part of a11y for 3 percent of people. These people rely on text scaling up, and your statically declared font size prevents that.</p>
+          <p>That doesn't mean all your text has to be >= 16px. It just means people who require bigger text, get bigger text.
+            So if your design uses 14px for body text, an user-set browser font size of 20px (or 125%) will render as 125% × 14px == 17.5px.</p>
+          <p>To make this work for both your design and your users, just use rem for font sizes and omit setting a baseline font size:</p>
+          <pre><code>
+            html {
+              /* do not specify any font size here, at least not in px */
+            }
+
+            body {
+              font-size: 0.875rem; /* == 14/16 */
+              padding: 2rem; /* 32px */
+            }
+          </code></pre>
+          <p>More examples?</p>
+          <p>Look at these four buttons. They appear identical to 97% of all users (the 16px crowd):</p>
         </section>
         <section>
           <p>Everybody has an understanding of what a centimeter is in the real world,
