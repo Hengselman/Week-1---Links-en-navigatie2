@@ -31,6 +31,10 @@ h2{
   margin-bottom: 20px;
 }
 
+blockquote{
+  margin-top: 20px;
+}
+
 section{
   margin: 15px 0;
 }
