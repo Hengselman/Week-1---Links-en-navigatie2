@@ -58,17 +58,9 @@
           <p>That is one of the reasons I prefer…</p>
         </section>
         <section>
-          <p>Some of the metric and imperial units are also built into CSS:</p>
-
-          <p>There's:</p>
-          <ul>
-            <li>n → inch, or 25.4 millimeters</li>
-            <li>pc → typographic pica, 1/6th of an inch or ~4,23 millimeters</li>
-            <li>pt → typographic point, 1/12th of a pica or 1/72th of an inch or ~0,353 millimeters</li>
-            <li>cm → centimeter, 1/100th of a meter</li>
-            <li>mm → millimeter, 1/10 of a centimeter</li>
-            <li>Q → quarter millimeters (I know, before I researched this article I never heard about it either).</li>
-          </ul>
+          <h3>rem</h3>
+          <p>Like em, rem is relative to font size, but in this case always the font size specified by the root element of the document
+            (:root {…}, for websites it's the html element). So across your whole CSS code base 1rem will always be rendered the same size. But the question is: what size will that be in practice?</p>
         </section>
         <section>
           <p>Everybody has an understanding of what a centimeter is in the real world,
