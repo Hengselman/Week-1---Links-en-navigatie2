@@ -19,31 +19,34 @@
     </aside>
     <main class="container">
       <article>
-        <h1>A guide to CSS units — pt. 1: look at these absolute units!</h1>
+        <h1>A guide to CSS units — pt. 3: percents, viewports, magic and best practices</h1>
         <blockquote class="tldr">
           <p><b>TL;DR QUICK SUMMARY</b></p>
           <p>Welcome to our four part series on units in CSS, where we dive into each available unit,
-          explain the relationship between them and try to find out when to use which. We will talk about accessibility,
-          best practices for developer teams and the history of sizing stuff on screens (and in print). This first part will present a
-          general primer on the topic of size units, teach you everything you need to know about pixels and prepare you for the rabbit hole
-          we are about to go down. Stay tuned for the next part, in which we will talk about font relative units!</p>
+            explain the relationship between them and try to find out when to use which.
+            We will talk about accessibility, best practices for developer teams and the history of sizing elements on screens.
+            In this part we will talk about percentage based units like viewport units, magic numbers and best practices for sizing.</p>
         </blockquote>
         <section>
-          <p>Let's talk about units of length in general. At some point in the past, probably hundreds of thousands of years ago,
-          one of our ancestors needed a way to describe the size of something — maybe how big that mammoth was — they just saw.
-          So our ancestor used what was at hand — or at foot. Archaic units of measurement were often expressions of one's body: feet, ells, steps
-          (often times in duodecimal, or steps of 12, e.g. 12 inch == 1 foot). The bloody mammoth was 8 ells high! That's not very precise, sure —
-          but the difference between your ell length and mine isn't particularly important here... did you see the size of that beast!?</p>
+          <p><i>Did you miss <a href="https://www.peerigon.com/en/blog/complete-guide-to-css-units-series-part-1-absolute-units">part 1</a> or <a href="https://www.peerigon.com/en/blog/complete-guide-to-css-units-series-part-2-font-relative-units">part 2</a> of this series?</i></p>
+          <p>One unit used quite often in CSS is <code>%</code>.
+            It is mostly interpreted as percentage fractions of the same property in the parent element.
+            So a <code>width: 66.66%</code> will make an element two thirds of its parent element wide,
+            but a <code>font-size: 150%</code> will increase the currently set font size by 50%.
+            There are a few quirky exceptions, for example, <code>padding-top: 50%</code> does not
+            relate to a parent's padding but to its width.
+            See <a href="https://ismail9k.medium.com/css-percentage-unit-the-evil-parts-e07417a834ef">this article about the evil parts of CSS</a> for more...
+            Also, please do not use them wrong 🙏</p>
         </section>
         <section>
-          <p>In those days human contact was mostly limited to immediate neighbors, but as history progressed
-          the world grew more and more complicated and globalized. Thus, units (not only distance, also mass, volume, time, etc.)
-          had to be exact and unambiguous. Whenever the world grew more complex via evolving technology,
-          new units of measurements at higher precisions had to be defined and standardized.
-          It proved to also be very advantageous when these units are proportioned (ideally in decimal)
-          and depend on each other wherever possible, so conversion and calculations are easier. That's how the metric system came to be.</p>
-
-          <p><i>Disclaimer: the imperial system of units is impractical and weird. This article presumes familiarity with metric.</i></p>
+          <h3>Viewport units</h3>
+          <p><code>vw</code> (viewport width) and <code>vh</code> (viewport height) are percent values
+            (0—100) relative to the browser viewport (the browser window excluding the UI).
+            So on a <code>380px</code> wide phone screen, <code>50vw</code> would be rendered as <code>190px</code>, 
+            independent of context or parent elements.
+            On desktop browsers these units relate to the inside of the browser window
+            (or in javascript speak, the <code>window</code>).</p>
+          <p></p>
         </section>
         <section>
           <p>Some of the metric and imperial units are also built into CSS:</p>
