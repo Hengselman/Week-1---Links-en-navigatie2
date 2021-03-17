@@ -51,6 +51,10 @@ aside nav{
   background-color: #799ced;
 }
 
+pre{
+  font-size: 120%;
+}
+
 aside nav ul{
   list-style-type: none;
   margin: 0;
@@ -80,6 +84,10 @@ aside nav ul li a, aside nav ul li a:active, aside nav ul li a:visited{
   padding: 20px 5px;
 }
 
+footer{
+  margin-left: 25vw;
+}
+
 .trademark {
   font-size: 70%;
   font-style: italic;
@@ -104,14 +112,14 @@ aside nav ul li a, aside nav ul li a:active, aside nav ul li a:visited{
 }
 
 @media only screen and (max-width: 1000px) {
-  .container{
+  .container + footer{
     width: 70%;
     margin-left: 25vw;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .container{
+  .container + footer{
     width: 90%;
     padding-top: 35%;
     margin-left: 5vw;
